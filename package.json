@@ -19,6 +19,7 @@
   "homepage": "https://github.com/eweil505/twitter-js#readme",
   "dependencies": {
     "express": "^4.16.2",
-    "nodeman": "^1.1.2"
+    "nodeman": "^1.1.2",
+    "nunjucks": "^3.0.1"
   }
 }
