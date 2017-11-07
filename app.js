@@ -2,28 +2,39 @@ const express = require('express');
 const app = express();
 const nunjucks = require('nunjucks');
 // const template = nunjucks();
+// env.express(app);
 
-nunjucks.configure('views', {
-    autoescape: true,
-    express: app
-});
+nunjucks.configure('views', {noCache: true});
 
-app.get('/', function(req, res) {
-    res.render('index.html', nunjucksTitle, nunjucksLogic);
+
+app.engine('html',nunjucks.render);
+
+
+
+
+const locals = {
+    title: "An Example",
+    people: [
+        {name: "Gandalf"},
+        {name: "Frodo"},
+        {name: "Hermione"}
+    ]
+}
+
+
+// app.get('/', function(req, res) {
+// //     // res.render('index.html', nunjucksTitle, nunjucksLogic);
+//     res.render(nunjucks,'index.html', locals);
+// })
+
+
+nunjucks.render('index.html',locals, function(err,output) {
+    console.log(output);
+
 })
 
-const nunjucksTitle = {
-    title: "An Example"
-}
-    
-    
-const nunjucksLogic = {
-    people: {
-        person1: {name: "Gandalf"} ,
-        person2: {name: "Frodo"},
-        person3: {name: "Hermione"}
-    }
-}    
+
+
 
 app.listen(3000, function() {
     console.log('your server is running on localhost:3000')
