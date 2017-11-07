@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
 const nunjucks = require('nunjucks');
+const bank = require('./tweetBank');
 // const template = nunjucks();
 // env.express(app);
-
-
-
+const routes = require('./routes');
+app.use('/', routes);
 
 app.set('view engine', 'html'); // have res.render work with html files
 app.engine('html', nunjucks.render); // when giving html files to res.render, tell it to use nunjucks
@@ -14,27 +14,22 @@ nunjucks.configure('views', {noCache: true}); // point nunjucks to the proper di
 
 
 
-const locals = {
-    title: "An Example",
-    people: [
-        {name: "Hank Williams"},
-        {name: "P. Diddy"},
-        {name: "Aerosmith"}
-    ]
-}
 
 
 
+// app.get('/', function(req, res) {
 
-app.get('/', function(req, res) {
-    res.render('index',locals);
-})
+//     res.render('index',locals);
+// })
 
 
-nunjucks.render('index.html',locals, function(err,output) {
-    console.log(output);
+// nunjucks.render('index.html',locals, function(err,output) {
+//     console.log(output);
 
-})
+// })
+
+
+
 
 
 
@@ -49,12 +44,21 @@ app.use('/', function(req,res,next) {
   next();
 })
 
-app.get('/news', function(req, res, next) {
-    res.send('<h1>Welcome to fake twitter news!!!</h1>')
-})
+// app.get('/news', function(req, res, next) {
+//     res.send('<h1>Welcome to fake twitter news!!!</h1>')
+// })
 
-app.get('/', function(req, res, next) {
-    res.send('<h1>Welcome to fake twitter</h1>')
-})
+// app.get('/', function(req, res, next) {
+//     res.send('<h1>Welcome to fake twitter</h1>')
+// })
+
+// const locals = {
+//     title: "An Example",
+//     people: [
+//         {name: "Hank Williams"},
+//         {name: "P. Diddy"},
+//         {name: "Aerosmith"}
+//     ]
+// }
 
 
