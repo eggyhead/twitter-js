@@ -1,10 +1,13 @@
 const _ = require('lodash');
 
 const data = [];
-// const fakeData = [{name: 'Erika', tweet: 'Hey hey!'}, {name: 'Hannah', tweet: 'Sup'}]
+let id = 0
+// const fakeData = [{name: 'Erika', tweet: 'Hey hey!', id: 1}, {name: 'Hannah', tweet: 'Sup', id: 2}]
 
 function add (name, content) {
-    data.push({ name: name, content: content });
+    data.push({ name: name, content: content, id: id.toString()});
+    id++;
+    console.log(id);
   }
   
   function list () {

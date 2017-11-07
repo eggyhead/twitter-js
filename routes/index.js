@@ -10,15 +10,21 @@ router.get('/', function (req, res) {
   res.render( 'index', { tweets: tweets } );
 });
 
+router.get('/users/:name', function(req, res) {
+  var currName = req.params.name; //the name requested by the client in this format: firstname-lastname
+  currName = currName.split('-').join(' ');  
+  var list = tweetBank.find( {name: currName} ); //returns an 
+  //array with the data associated with that name from the tweetBank
+  // console.dir(res);
+  res.render( 'index', {tweets: list}); //
+});
 
+router.get('/tweets/:id', function(req, res) {
+  var currId = req.params.id;
+  var tweet = tweetBank.find({id: currId});
+  res.render('index', {tweets: tweet});
+})
 
-// router.get('/stylesheets/style.css', function (req,res) {
-//   // res.sendFile(path.join(__dirname, '../public/stylesheets/style.css'));
-
-
-// });
-
-// router.get('')
 
 router.use(express.static('public'));
 

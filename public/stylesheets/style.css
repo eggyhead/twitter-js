@@ -41,8 +41,14 @@ code {
   font-size: 80%;
 }
 
+li {
+  color: blue;
+}
+
 .tweetbox {
+  /* content:url("http://lorempixel.com/48/48"); */
   padding: 7px;
+  /* color: blue; */
 }
 
 .tweetbox img {
