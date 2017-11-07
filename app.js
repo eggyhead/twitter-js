@@ -4,10 +4,12 @@ const nunjucks = require('nunjucks');
 // const template = nunjucks();
 // env.express(app);
 
-nunjucks.configure('views', {noCache: true});
 
 
-app.engine('html',nunjucks.render);
+
+app.set('view engine', 'html'); // have res.render work with html files
+app.engine('html', nunjucks.render); // when giving html files to res.render, tell it to use nunjucks
+nunjucks.configure('views', {noCache: true}); // point nunjucks to the proper directory for templates
 
 
 
@@ -22,10 +24,11 @@ const locals = {
 }
 
 
-// app.get('/', function(req, res) {
-// //     // res.render('index.html', nunjucksTitle, nunjucksLogic);
-//     res.render(nunjucks,'index.html', locals);
-// })
+
+
+app.get('/', function(req, res) {
+    res.render('index',locals);
+})
 
 
 nunjucks.render('index.html',locals, function(err,output) {
