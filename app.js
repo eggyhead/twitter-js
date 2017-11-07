@@ -17,9 +17,9 @@ nunjucks.configure('views', {noCache: true}); // point nunjucks to the proper di
 const locals = {
     title: "An Example",
     people: [
-        {name: "Gandalf"},
-        {name: "Frodo"},
-        {name: "Hermione"}
+        {name: "Hank Williams"},
+        {name: "P. Diddy"},
+        {name: "Aerosmith"}
     ]
 }
 
